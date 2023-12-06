@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Music</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script type="module" src="script.js" defer></script>
+    <script src="modal.js" defer></script>
+    <script src="login.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/__playlists.js" defer></script>
+</head>
+<body>
+    <div class="menu-bar">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closeModalBtn">&times;</span>
+                <div class="modal-content-grid">
+                    <form id="form" class="form">
+                        <label for="input1">Название:</label>
+                            <textarea  id="input1" name="input1" rows="4" required></textarea>
+                  
+                        <label for="input2">Автор(ы):</label>
+                            <textarea id="input2" name="input2" rows="4" required></textarea>
+                  
+                        <label for="input3">Продюссер(ы):</label>
+                            <textarea id="input3" name="input3" rows="4" required></textarea>
+                  
+                        <label for="image1">Обложка:</label>
+                            <input class="image1" type="file" id="image1" name="image1" accept="image/*">
+                        <label for="input5">Плейлисты:</label>
+                            <select id="select1" name="select1" required>
+                                <option value="option1">Мейнстрим</option>
+                                <option value="option2">Гиперпоп</option>
+                                <option value="option3">Хип-Хоп</option>
+                                <option value="option4">Панк-Рок</option>
+                                <option value="option5">Альтернатива</option>
+                                <option value="option6">Пост-Панк</option>
+                            </select>
+
+                        <label for="input6">Описание:</label>
+                        <textarea id="input6" name="input6" rows="4" required></textarea>
+                        
+                        
+                        <button type="button" id="submitBtn">Отправить</button>
+                        
+                      </form>
+                      
+                      <div class="output_grid_form">
+                        <img id="previewImage1" class="preview-image" alt="Preview Image">
+
+                            <div id="output" class="output" style="display: none;"></div>
+                            <div id="errorContainer" style="display: none; color: red;"></div>
+                      </div>
+                </div> 
+            </div>
+          </div>
+        <div class="menu-bar-logo-wrap">
+            <div class="menu-bar-logo">
+                <a href="/" class="menu-logo-bar">
+                    <span class="menu-bar-logo-abs menu-bar-logo-abs-small">
+                        <h10>PMR</h2>
+                    </span>
+                    <span class="menu-bar-logo-abs menu-bar-logo-abs-big">
+                        <h10>Pure Music Russia</h2>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="menu-bar-nav">
+            <div class="menu-bar-nav-group">
+                <a href="/">
+                    <span class="mbtn-item">
+                        <img src="/image/menu-home.svg" alt="">
+                    </span>
+                     <span class="mbtn-item-text"></span>
+                </a>
+            </div>
+            <div class="menu-bar-nav-group">
+                <a href="/">
+                    <span class="mbtn-item">
+                        <img src="/image/artist_outline.svg" alt="">
+                        <span class="mbtn-item-text">Артисты</span>
+                    </span>
+                </a>
+            </div>
+            <div class="menu-bar-nav-group">
+                <a href="/releases.html">
+                    <span class="mbtn-item">
+                        <img src="/image/releases.svg" alt="">
+                        <span class="mbtn-item-text">Релизы</span>
+                    </span>
+                </a>
+            </div>
+            
+            <div class="menu-bar-nav-group">
+                <a href="./about.html">
+                    <span class="mbtn-item">
+                        <img src="/image/menu-about.svg" alt="">
+                        <span class="mbtn-item-text">О нас</span>
+                    </span>
+                </a>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+    <div class="mobile-header">
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="mobile-menu">
+        <div class="mm-list">
+            <a href="/" class="mbn-item">
+                <span class="mbn-item-icon">
+                </span>
+                <span class="mbn-item-text">Главная</span>
+            </a>
+            <a href="/" class="mbn-item">
+                <span class="mbn-item-icon">
+                <span class="mbn-item-text">Аристы</span>
+            </a>
+            <a href="../releases.html" class="mbn-item">
+                <span class="mbn-item-icon">
+                </span>
+                <span class="mbn-item-text">Релизы</span>
+            </a>
+            <a href="../about.html" class="mbn-item scroll">
+                <span class="mbn-item-icon">
+                </span>
+                <span class="mbn-item-text">О нас</span>
+            </a>
+        </div>
+        <div class="mm-close" onclick="offtoggleMenu()">
+            <img src="/image/close-icon.svg" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="wrap">
+                <div id="inner-header">
+                    <span class="typelogo">Pure Music Russia</span>
+                    <div class="sbmt-button" id="sbmt-button">
+                        <img src="/" alt="">
+                        <span class="sbmt-text">Добавить оценку релиза</span>
+                    </div>
+                    <form class="is-search-form">
+                        <label for="">
+                            
+                            <input type="search" name="" id="" class="is-search-input" placeholder="Поиск">
+                        </label>
+                        <button type="submit" class="is-search-submit">
+                            <span></span>
+                        </button>
+                    </form>
+                    <a href="/admin_panel.html" class="login-button">
+                        <img src="/image/login-icon.svg" alt="">
+                        <span>Войти</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div id="content">
+            <div id="inner-content">
+                <section class="home-stories-section wrap">
+                    <div class="hst-wrapper">
+                        <div class="home-stories-title">
+                                <div class="home-stories-title-content">
+                                    <img src="" alt="">
+                                    <span>ТОП-10 популярного за месяц</span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="stories-nav">
+
+                    </div>  
+                    <div class="swiper mySwiper stories-slider swiper-initialized swiper-horizontal swiper-free-mode ">
+                        <div class="swiper-wrapper">
+                        </div> 
+                    </div>
+                </section>
+                <section class="home-awards-section">
+                    <div class="wrap">
+                        <div class="section-title">
+                            <span>Недавние релизы</span>
+                            <span class="section-title-additional">
+                                Декабрь 2023
+                            </span>
+                        </div>
+                    </div>
+                    <div class="swiper-section wrap">
+                            <div class="swiper mySwiper awards-slider wrap swiper-initialized swiper-horizontal swiper-backface-hidden">
+                                <div class="swiper-wrapper" id="swiper-wrapper-b9104c240da38564f" aria-live="polite" style="cursor: grab;">
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px;margin-right: 20px;" role="group"; aria-label="1 / 8">
+                                        <div class="swiper-wrapper card-award-small card-artist ">
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/woee33.jpg" alt="">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">woee33</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">#imissubloodymary2
+                                                            </div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px;margin-right: 20px;" role="group"; aria-label="2 / 8">
+                                        <div class="card-wrapper card-award-small card-artist ">
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/9mice.png" alt="">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">9mice</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">SPRAY</div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px; margin-right: 20px;" role="group"; aria-label="3 / 8">
+                                        <div class="card-wrapper card-award-small card-artist ">
+
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/toxis.jpg" alt="">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">Toxi$</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">Hurtz</div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px;margin-right: 20px;" role="group"; aria-label="4 / 8">
+                                        <div class="card-wrapper card-award-small card-artist ">
+
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/cupsize.jpeg" alt="" width="228px" height="4000px">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">Cupsize</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">дели на два</div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px;margin-right: 20px;" role="group"; aria-label="5 / 8">
+                                        <div class="card-wrapper card-award-small card-artist ">
+
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/pure.jpg" alt=""">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">Pure</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">Пусто</div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px;margin-right: 20px;" role="group"; aria-label="6 / 8">
+                                        <div class="card-wrapper card-award-small card-artist ">
+
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/3dnyadozhdya.jpg" alt="">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">Три Дня Дождя</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">Отпускай</div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px;margin-right: 20px;" role="group"; aria-label="7 / 8">
+                                        <div class="card-wrapper card-award-small card-artist ">
+
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/thrillpill.jpg" alt="">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">Thrill Pill</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">Пластик</div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide-active" style="width: 272px;margin-right: 20px;" role="group"; aria-label="8 / 8">
+                                        <div class="card-wrapper card-award-small card-artist ">
+
+                                            <div class="card card-small">
+                                                <div class="card-image">
+                                                    <img src="/image/artists/pepelna.jpg" alt="">
+                                                    <div class="card-content">
+                                                            <div class="card-header">
+                                                                <div class="card-header-info">
+                                                                    <div class="card-title">Pepel Nahudi</div>
+                                                                </div>
+                                                            </div>
+                                                        <div class="card-footer">
+                                                            <div class="small-card-name">Hammer Balenci</div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-link-wrapper">
+                        <a href="./releases.html" class="button section-btn">
+                            <span>Все релизы</span>
+                        </a>
+                    </div>
+                </section>
+                <section class="playlists-section">
+                    
+                    <div class="wrap">
+                        <h2 class="section-itle">Обновление плейлистов</h2>
+                        <div class="playlists-grid" id="playlists-grid">
+                            <a href="https://music.yandex.ru/users/music-blog/playlists/2048" target="_blank" class="playlist-block">
+                                <div class="playlist-block-grid" >
+                                    <img src="/image/artists/9mice_playlists.jpg" alt="">
+                                    <img src="/image/artists/poshlaya_molly_playlists.png" alt="">
+                                    <img src="/image/artists/toxis_playlists.jpg" alt="">
+                                    <img src="/image/artists/woee33_playlists.jpg" alt="">
+                                </div>
+                                <div class="playlist-block-title">Мейнстрим</div>
+                            </a>
+                            <a href="https://music.yandex.ru/users/music.partners/playlists/1169" target="_blank" class="playlist-block">
+                                <div class="playlist-block-grid">
+                                    <img src="/image/artists/newlightchild.jpg" alt="">
+                                    <img src="/image/artists/lovv66.webp" alt="">
+                                    <img src="/image/artists/toxis.jpg" alt="">
+                                    <img src="/image/artists/woee33.jpg" alt="">
+                                </div>
+                                <div class="playlist-block-title">Альтернатива</div>
+                            </a>
+                            <a href="https://music.yandex.ru/users/music-blog/playlists/1892" target="_blank" class="playlist-block">
+                                <div class="playlist-block-grid">
+                                    <img src="/image/artists/9mice_playlists.jpg" alt="">
+                                    <img src="/image/artists/poshlaya_molly_playlists.png" alt="">
+                                    <img src="/image/artists/17sev.jpg" alt="">
+                                    <img src="/image/artists/woee33_playlists.jpg" alt="">
+                                </div>
+                                <div class="playlist-block-title">Хип-Хоп</div>
+                            </a>
+                            <a href="https://music.yandex.ru/users/music-blog/playlists/2709" target="_blank" class="playlist-block">
+                                <div class="playlist-block-grid">
+                                    <img src="/image/artists/pure.jpg" alt="">
+                                    <img src="/image/artists/17 seventeen.png" alt="">
+                                    <img src="/image/artists/sqwore.jpg" alt="">
+                                    <img src="/image/artists/sqwore_alb.jpg" alt="">
+                                </div>
+                                <div class="playlist-block-title">Гиперпоп</div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>  
+    <footer class="footer">
+        <div id="inner-footer" class="wrap cf">
+            <div class="footer-top">
+            </div>
+            <div class="footer-bottom grid-2-col">
+                <div class="socials">
+                    <a href="https://t.me/pyPure" class="soc-icon soc-tg" target="_blank"></a>
+                    <a href="https://www.instagram.com/idkpureidkpure/" class="soc-icon soc-inst" target="_blank"></a>
+                    <a href="https://vk.com/pure_mskw" class="soc-icon soc-vk" target="_blank"></a>
+                    <a href="https://discord.gg/supremacy11" class="soc-icon soc-discord" target="_blank"></a>
+                </div>
+                <div class="footer-contacts">
+                    <div class="credits">«Pure Music Russia» © 2023</div>
+                    <a href="/">Политика конфендоциальности</a>
+                    <a href="/">Согласие на обработку персональных данных</a>
+                    <div class="footer-mail">
+                        <br><span>Контакты:
+                            <a href="mailto:info@qwerty.ru">info@qwerty.ru</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loginSubmitBtn" style="display: none;"></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script type="module" src="script.js" defer></script>
+    <script src="login.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</head>
+<body>
+    <div id="loginModal">
+        <div class="modal-content__login">
+            <span> <a href="/">PMR LOGIN</a></span>
+            <label for="loginInput">Login:</label>
+            <input type="text" id="loginInput" name="loginInput" required>
+            <label for="passwordInput">Password:</label>
+            <input type="password" id="passwordInput" name="passwordInput" required autocomplete="off">
+            <button id="loginSubmitBtn">Войти</button>
+            <div id="errorContainer"></div>
+            
+            
+        </div>
+    </div>
+
+    <div id="dataContainer"></div>
+    
+    
+</body>
+</html>
